@@ -20,8 +20,8 @@ const BackgroundAnimation = () => {
 
     const createGradient = () => {
       const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height)
-      gradient.addColorStop(0, gradientColors[currentColorIndex % gradientColors.length])
-      gradient.addColorStop(1, gradientColors[(currentColorIndex + 1) % gradientColors.length])
+      gradient.addColorStop(0, gradientColors[Math.floor(currentColorIndex) % gradientColors.length])
+      gradient.addColorStop(1, gradientColors[(Math.floor(currentColorIndex) + 1) % gradientColors.length])
       return gradient
     }
 
@@ -42,7 +42,10 @@ const BackgroundAnimation = () => {
         ctx.fill()
       }
 
-      currentColorIndex += 0.001
+      currentColorIndex += 0.005
+      if (currentColorIndex >= gradientColors.length) {
+        currentColorIndex = 0
+      }
       requestAnimationFrame(animate)
     }
 
