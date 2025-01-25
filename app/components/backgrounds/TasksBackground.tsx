@@ -27,24 +27,22 @@ const TasksBackground = () => {
       speed: number
 
       constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+        this.x = Math.random() * (canvas?.width ?? 0)
+        this.y = Math.random() * (canvas?.height ?? 0)
         this.size = Math.random() * 20 + 10
         this.color = `hsla(${Math.random() * 60 + 180}, 70%, 50%, 0.3)`
         this.completed = Math.random() > 0.5
         this.speed = Math.random() * 0.5 + 0.1
       }
-
       update() {
         this.y += this.speed
 
-        if (this.y > canvas.height) {
+        if (canvas && this.y > canvas.height) {
           this.y = -this.size
-          this.x = Math.random() * canvas.width
+          this.x = Math.random() * (canvas.width ?? 0)
           this.completed = Math.random() > 0.5
         }
       }
-
       draw() {
         if (!ctx) return
         ctx.fillStyle = this.color

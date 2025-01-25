@@ -27,26 +27,26 @@ const WellnessBackground = () => {
       speed: number
 
       constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+        this.x = Math.random() * (canvas?.width ?? 0)
+        this.y = Math.random() * (canvas?.height ?? 0)
         this.size = Math.random() * 20 + 10
         this.angle = Math.random() * Math.PI * 2
         this.color = `hsla(${120 + Math.random() * 60}, 70%, 70%, 0.6)`
         this.speed = Math.random() * 0.5 + 0.1
       }
-
       update() {
         this.y += Math.sin(this.angle) * this.speed
         this.x += Math.cos(this.angle) * this.speed
         this.angle += 0.01
 
-        if (this.x > canvas.width) this.x = 0
-        else if (this.x < 0) this.x = canvas.width
+        if (canvas) {
+          if (this.x > canvas.width) this.x = 0
+          else if (this.x < 0) this.x = canvas.width
 
-        if (this.y > canvas.height) this.y = 0
-        else if (this.y < 0) this.y = canvas.height
+          if (this.y > canvas.height) this.y = 0
+          else if (this.y < 0) this.y = canvas.height
+        }
       }
-
       draw() {
         if (!ctx) return
         ctx.save()

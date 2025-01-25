@@ -30,19 +30,18 @@ const AnalyticsBackground = () => {
       constructor() {
         this.width = Math.random() * 100 + 50
         this.height = Math.random() * 60 + 20
-        this.x = Math.random() * (canvas.width - this.width)
-        this.y = Math.random() * (canvas.height - this.height)
+        this.x = Math.random() * ((canvas?.width ?? 0) - this.width)
+        this.y = Math.random() * ((canvas?.height ?? 0) - this.height)
         this.color = `hsla(${Math.random() * 360}, 70%, 70%, 0.3)`
         this.speed = Math.random() * 0.5 + 0.1
         this.points = Array.from({ length: 10 }, () => Math.random())
       }
-
       update() {
         this.x += this.speed
 
-        if (this.x > canvas.width) {
+        if (canvas && this.x > canvas.width) {
           this.x = -this.width
-          this.y = Math.random() * (canvas.height - this.height)
+          this.y = Math.random() * ((canvas.height ?? 0) - this.height)
         }
 
         this.points.shift()

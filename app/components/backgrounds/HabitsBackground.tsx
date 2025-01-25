@@ -27,14 +27,13 @@ const HabitsBackground = () => {
       maxRadius: number
 
       constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+        this.x = Math.random() * (canvas?.width ?? 0)
+        this.y = Math.random() * (canvas?.height ?? 0)
         this.radius = Math.random() * 2 + 1
         this.color = `hsla(${Math.random() * 360}, 70%, 70%, 0.3)`
         this.growth = Math.random() * 0.1 + 0.05
         this.maxRadius = Math.random() * 20 + 10
       }
-
       update() {
         this.radius += this.growth
 
