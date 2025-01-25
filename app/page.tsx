@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import HomeBackground from "./components/backgrounds/HomeB"
+import HomeBackground from "./components/backgrounds/HomeBackground"
 
 const MotionLink = motion(Link)
 
